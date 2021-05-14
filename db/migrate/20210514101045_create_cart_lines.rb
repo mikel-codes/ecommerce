@@ -1,6 +1,6 @@
-class CreateCollectedItems < ActiveRecord::Migration[6.0]
+class CreateCartLines < ActiveRecord::Migration[6.0]
   def change
-    create_table :collected_items do |t|
+    create_table :cart_lines do |t|
       t.references :product, null: false, foreign_key: true
       t.belongs_to :cart, null: false, foreign_key: true
 
