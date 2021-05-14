@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  img: MyString
-  price: 9.99
+  name: "Iphone"
+  description: "world class phones"
+  img: ""
+  price: 100.00
 
 two:
-  name: MyString
-  description: MyString
-  img: MyString
-  price: 9.99
+  name: "MottoRolla"
+  description: "Fast Internet Phones"
+  img: "mt.png"
+  price: 30.00
