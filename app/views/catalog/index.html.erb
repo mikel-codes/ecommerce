@@ -1,4 +1,7 @@
-<h1>Catalog Page</h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<%end%>
+<h1>Shop</h1>
 <div class="row">
     <% @products.each do |p|%>
     <div class="col-3 offset-1">
