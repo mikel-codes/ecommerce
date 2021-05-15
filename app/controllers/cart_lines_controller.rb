@@ -1,4 +1,6 @@
 class CartLinesController < ApplicationController
+  include CurrentCart
+  before_action :set_current_cart, only: [:create]
   before_action :set_cart_line, only: %i[ show edit update destroy ]
 
   # GET /cart_lines or /cart_lines.json
@@ -21,7 +23,8 @@ class CartLinesController < ApplicationController
 
   # POST /cart_lines or /cart_lines.json
   def create
-    @cart_line = CartLine.new(cart_line_params)
+    product = Product.find(params[:product_id])
+    @cart_line = @cart.cart_lines.build(product: product)
 
     respond_to do |format|
       if @cart_line.save

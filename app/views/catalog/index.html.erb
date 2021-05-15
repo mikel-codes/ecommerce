@@ -1,14 +1,15 @@
 <h1>Catalog Page</h1>
 <div class="row">
     <% @products.each do |p|%>
-    <div class="col-3">
-        <div class="card" style="width: 18rem; margin-bottom: 10px">
+    <div class="col-3 offset-1">
+        <div class="card" style="width: 18rem; margin-bottom: 10px;">
             <%= image_tag  href="https://picsum.photos/200/140?grayscale" , class: "card-img-top" , alt: "Product Image" %>
             <div class="card-body">
                 <h5 class="card-title"><%= sanitize(p.name) %> </h5>
                 <p class="card-text"><%= sanitize(p.description) %></p>
-                <h6 class="card-text"><b>N<%= number_to_currency(p.price)%></b></h6>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
+                <h6 class="card-text"><b><%= number_to_currency(p.price, unit: "₦")%></b></h6>
+                <%= button_to "Add to Cart", 
+                cart_lines_path(product_id: p.id), class: "btn btn-primary" %>
             </div>
         </div>
     </div>
