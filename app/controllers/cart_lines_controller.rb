@@ -28,7 +28,7 @@ class CartLinesController < ApplicationController
 
     respond_to do |format|
       if @cart_line.save
-        format.html { redirect_to @cart_line, notice: "Cart line was successfully created." }
+        format.html { redirect_to cart_lines_url, notice: "Cart line was successfully created." }
         format.json { render :show, status: :created, location: @cart_line }
       else
         format.html { render :new, status: :unprocessable_entity }
