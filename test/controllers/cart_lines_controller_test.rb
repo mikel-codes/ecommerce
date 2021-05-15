@@ -17,10 +17,12 @@ class CartLinesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cart_line" do
     assert_difference('CartLine.count') do
-      post cart_lines_url, params: { cart_line: { cart_id: @cart_line.cart_id, product_id: @cart_line.product_id } }
+      post cart_lines_url, params: { product_id: @cart_line.product_id } 
     end
 
-    assert_redirected_to cart_line_url(CartLine.last)
+    assert_redirected_to cart_lines_url
+    follow_redirect!
+    #assert_select 
   end
 
   test "should show cart_line" do
