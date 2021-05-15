@@ -28,8 +28,8 @@ class CartLinesController < ApplicationController
 
     respond_to do |format|
       if @cart_line.save
-        format.html { redirect_to cart_lines_url, notice: "Cart line was successfully created." }
-        format.json { render :show, status: :created, location: @cart_line }
+        format.html { redirect_to @cart_line.cart, notice: "Product \"#{product.name}\" was successfully added." }
+        format.json { render :show, status: :created, location: @cart_line.cart }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @cart_line.errors, status: :unprocessable_entity }
