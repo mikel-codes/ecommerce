@@ -1,5 +1,4 @@
 class Cart < ApplicationRecord
-    attr_accessor :cart_lines
     has_many :cart_lines, dependent: :destroy
     def add_product product
         cart_line = cart_lines.find_by(product_id: product.id)
