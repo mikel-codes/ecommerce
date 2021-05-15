@@ -1,29 +1,36 @@
+<% if notice %>
 <p id="notice"><%= notice %></p>
+<% end %>
 
 <h1>Cart Lines</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Cart</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Cart</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @cart_lines.each do |cart_line| %>
-      <tr>
-        <td><%= cart_line.product_id %></td>
-        <td><%= cart_line.cart_id %></td>
-        <td><%= link_to 'Show', cart_line %></td>
-        <td><%= link_to 'Edit', edit_cart_line_path(cart_line) %></td>
-        <td><%= link_to 'Destroy', cart_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @cart_lines.each do |cart_line| %>
+        <tr>
+            <td><%= cart_line.product_id %></td>
+            <td><%= cart_line.cart_id %></td>
+            <td><%= link_to 'Show', cart_line %></td>
+            <td><%= link_to 'Edit', edit_cart_line_path(cart_line) %></td>
+            <td><%= link_to 'Destroy', cart_line, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Cart Line', new_cart_line_path %>
+<div class="row">
+    <div class="col-5">
+        <%= link_to 'Shop', 'shop/products' %>
+    </div>
+    <div class="col-5">
+    </div>
+</div>
