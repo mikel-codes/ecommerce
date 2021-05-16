@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+    has_many :cart_lines, dependent: :destroy
     enum payment_types: {
         "Check" => 0,
         "Credit Card" => 1,
