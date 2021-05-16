@@ -20,9 +20,9 @@ class CartLinesControllerTest < ActionDispatch::IntegrationTest
       post cart_lines_url, params: { product_id: @cart_line.product_id } 
     end
 
-    assert_redirected_to cart_lines_url
+  
     follow_redirect!
-    #assert_select 
+    assert_select "h1", "Showing Cart:"
   end
 
   test "should show cart_line" do
@@ -35,16 +35,16 @@ class CartLinesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update cart_line" do
-    patch cart_line_url(@cart_line), params: { cart_line: { cart_id: @cart_line.cart_id, product_id: @cart_line.product_id } }
-    assert_redirected_to cart_line_url(@cart_line)
-  end
+
 
   test "should destroy cart_line" do
     assert_difference('CartLine.count', -1) do
       delete cart_line_url(@cart_line)
     end
+    assert_not_equal('CarLine.count', 0) do
+      follow_redirect! 
+      assert_select 'h1', "Shopping Cart:"
 
-    assert_redirected_to cart_lines_url
+    end
   end
 end
