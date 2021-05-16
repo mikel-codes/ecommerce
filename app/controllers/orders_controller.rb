@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_current_cart, only: [:new, :create]
-  before_action :ensure_cart_is_not_empty, only: [:new, :create]
+  before_action :ensure_cart_is_not_empty, only: [:new]
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -25,10 +25,12 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.collect_all_items_from_cart(@cart)
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: "Order was successfully created." }
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        format.html { redirect_to shop_products_url, notice: "Thanks for placing your order" }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,8 +61,15 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
 
+    
+  def collect_all_items_from_cart(cart)
+      cart.cart_lines.each do |item|
+        item.cart_id = nil
+        cart_lines << item
+      end
+  end
+  private
     def ensure_cart_is_not_empty
       if @cart.cart_lines.empty?
         redirect_to shop_products_url, notice: "Cart is empty and no order could be placed"
