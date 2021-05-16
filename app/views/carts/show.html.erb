@@ -29,8 +29,8 @@
         </tr>
         <% end %>
         <tr>
-            <td colspan='5'></td>
-            <td colSpan='3'>N<%= @cart.total_sum %>
+            <td colspan='3'>Total</td>
+            <td colSpan='2'>N<%= @cart.total_sum %>
             <td>
         </tr>
     </tbody>
@@ -43,6 +43,7 @@
         <%= link_to 'Back to Shop', shop_products_url, class: "shop" %>
     </div>
     <div class="col-5">
+        <%= link_to 'Checkout', new_order_path, method: :get, class: "shop" %>
     </div>
     <div class="offset-3 col-4">
         <%= link_to  "Empty Cart", @cart,method: :delete, data: {confirm: "Are you sure"} %>
