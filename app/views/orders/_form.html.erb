@@ -1,37 +1,38 @@
 <%= form_with(model: order, local: true) do |form| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<% if order.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
+    <ul>
         <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li><%= message %></li>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+</div>
+<% end %>
 
-  <div class="field">
+<div class="form_mb-3">
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
+</div>
 
-  <div class="field">
+<div class="mb-3">
     <%= form.label :address %>
     <%= form.text_area :address %>
-  </div>
+</div>
 
-  <div class="field">
+<div class="mb-3">
     <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+    <%= form.email_field :email, size: 30 %>
+</div>
 
-  <div class="field">
+<div class="mb-3">
     <%= form.label :pay_type %>
-    <%= form.number_field :pay_type %>
-  </div>
+    <%= form.select :pay_type, Order.pay_types.keys,
+prompt: 'Select a payment method' %>
+</div>
 
-  <div class="actions">
+<div class="actions">
     <%= form.submit %>
-  </div>
+</div>
 <% end %>
