@@ -10,7 +10,15 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect for empty cart" do
+    get new_order_url
+    assert_redirected_to shop_products_url
+    assert_equal flash[:notice], "Cart is empty and no order could be placed"
+  end
+
   test "should get new" do
+    #place an line in the cart
+    post cart_lines_url, params: {product_id: products(:one).id}
     get new_order_url
     assert_response :success
   end
