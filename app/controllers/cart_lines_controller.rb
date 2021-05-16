@@ -37,18 +37,7 @@ class CartLinesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cart_lines/1 or /cart_lines/1.json
-  def update
-    respond_to do |format|
-      if @cart_line.update(cart_line_params)
-        format.html { redirect_to @cart_line, notice: "Cart line was successfully updated." }
-        format.json { render :show, status: :ok, location: @cart_line }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cart_line.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
 
   # DELETE /cart_lines/1 or /cart_lines/1.json
   def destroy
