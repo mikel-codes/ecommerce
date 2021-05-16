@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyText
-  email: MyString
+  name: "Justice Gleen"
+  address: "10 free state ave, WDC"
+  email: "j@glib.co.us"
   pay_type: 1
 
 two:
-  name: MyString
-  address: MyText
-  email: MyString
-  pay_type: 1
+  name: "Yoni Sasuki"
+  address: "2, ExpressDome"
+  email: "szuki@glib.com"
+  pay_type: 2
