@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :ensure_cart_is_not_empty?, only: :new
+  before_action :ensure_cart_is_not_empty, only: :new
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
 
   private
     
-    def ensure_cart_is_not_empty?
+    def ensure_cart_is_not_empty
       if @cart.cart_lines.empty?
         redirect_to shop_products_url, notice: "Cart is empty and no order could be placed"
       end
