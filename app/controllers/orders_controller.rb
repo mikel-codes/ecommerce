@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCart
-  before_action :ensure_cart_is_not_empty, only: :new
+  before_action :ensure_cart_is_not_empty?, only: :new
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
