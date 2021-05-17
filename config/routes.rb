@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'admin/index'
+  get 'admin', to: 'admin#index'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :cart_lines
   resources :carts
+  
   get 'shop/products', to: "catalog#index"
   resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
