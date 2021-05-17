@@ -1,2 +1,25 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="row">
+    <div class="offset-3 col-4">
+        <h3>Log In</h3>
+
+        <% if notice %>
+        <p id="notice"><%= notice %></p>
+        <% end %>
+        <%= form_tag(remote: true) do %>
+        <div class="mb-3">
+            <%= label_tag :username, 'UserName:' %>
+            <%= text_field_tag :username, params[:username] %>
+        </div>
+        <div class="mb-3">
+
+            <%= label_tag :password, 'Password:' %>
+            <%= password_field_tag :password, params[:password] %>
+        </div>
+
+        <%= submit_tag "Login",class: "btn btn-primary" %>
+
+
+        <% end %>
+    </div>
+</div>
+<for>
