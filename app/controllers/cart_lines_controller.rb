@@ -1,4 +1,6 @@
 class CartLinesController < ApplicationController
+
+  skip_before_action :authorize_request, only: :create
   include CurrentCart
   before_action :set_current_cart, only: [:create, :destroy]
   before_action :set_cart_line, only: %i[ show edit update destroy ]

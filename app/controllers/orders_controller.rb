@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize_request, only: [:new, :create]
   include CurrentCart
   before_action :set_current_cart, only: [:new, :create]
   before_action :ensure_cart_is_not_empty, only: [:new]
