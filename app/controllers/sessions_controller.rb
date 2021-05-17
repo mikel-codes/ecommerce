@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if u.try(:authenticate, params[:password])
       session[:user_id] =u.id
       flash[:notice] = "Logged in successfully."
-      redirect_back(fallback_location: "/",allow_other_hosts: false)
+      redirect_to shop_products_url, notice: "You logged in successfully"
     else
       flash[:notice] = "Invalid details."
       render :action => 'new'
