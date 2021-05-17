@@ -7,10 +7,11 @@ class SessionsController < ApplicationController
     u = User.find_by(username: params[:username])
     if u.try(:authenticate, params[:password])
       session[:user_id] =u.id
-      redirect_to admin_url, notice: "log in successfull"
+      flash[:notice] = "Logged in successfully."
+      redirect_back(fallback_location: "/",allow_other_hosts: false)
     else
-      redirect_to login_url, notice: "Invalid username and password"
-      
+      flash[:notice] = "Invalid details."
+      render :action => 'new'
     end
   end
 
