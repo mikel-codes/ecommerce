@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     post login_url, params: {username: @user.username, password: "arch_city"}
     assert_response :redirect
-    assert_redirected_to admin_url
+    assert_redirected_to shop_products_url
   end
 
   test "should get destroy" do
