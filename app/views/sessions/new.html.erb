@@ -5,7 +5,7 @@
         <% if notice %>
         <p id="notice"><%= notice %></p>
         <% end %>
-        <%= form_tag(remote: true) do %>
+        <%= form_tag do %>
         <div class="mb-3">
             <%= label_tag :username, 'UserName:' %>
             <%= text_field_tag :username, params[:username] %>
@@ -20,6 +20,9 @@
 
 
         <% end %>
+
+        <div class="mt-10">
+            <p class=""> Dont have an Account? <%= link_to "Sign Up", "/users/new" %></p>
+        </div>
     </div>
 </div>
-<for>
