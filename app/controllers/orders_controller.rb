@@ -64,13 +64,9 @@ class OrdersController < ApplicationController
 
 
     
-  def collect_all_items_from_cart(cart)
-      cart.cart_lines.each do |item|
-        item.cart_id = nil
-        cart_lines << item
-      end
-  end
+
   private
+
     def ensure_cart_is_not_empty
       if @cart.cart_lines.empty?
         redirect_to shop_products_url, notice: "Cart is empty and no order could be placed"
